@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sky Glider — Flappy Bird Style Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Main game container: scales responsively to fit any screen -->
+  <div id="game-container">
+
+    <!-- Game canvas: all rendering happens here -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- HUD: live score + high score -->
+    <div id="hud">
+      <div id="score">0</div>
+      <div id="best">BEST <span id="bestValue">0</span></div>
+    </div>
+
+    <!-- Pause button (visible during play) -->
+    <button id="pauseBtn" aria-label="Pause game">❙❙</button>
+
+    <!-- Start Screen -->
+    <div id="startScreen" class="overlay">
+      <div class="panel">
+        <h1 class="title">Sky&nbsp;Glider</h1>
+        <p class="subtitle">Tap, click, or press <span class="key">Space</span> to fly</p>
+        <div class="bird-preview" id="birdPreview">
+          <div class="bird-shape">
+            <div class="wing"></div>
+            <div class="eye"></div>
+            <div class="beak"></div>
+          </div>
+        </div>
+        <button id="startBtn" class="btn primary">Start Game</button>
+        <p class="hint">Avoid the pillars and the ground &mdash; good luck!</p>
+      </div>
+    </div>
+
+    <!-- Pause Screen -->
+    <div id="pauseScreen" class="overlay hidden">
+      <div class="panel">
+        <h1 class="title small">Paused</h1>
+        <button id="resumeBtn" class="btn primary">Resume</button>
+        <button id="restartFromPauseBtn" class="btn secondary">Restart</button>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen" class="overlay hidden">
+      <div class="panel">
+        <h1 class="title small">Crash Landing</h1>
+        <div class="result-row">
+          <div class="result-box">
+            <span class="result-label">Score</span>
+            <span class="result-value" id="finalScore">0</span>
+          </div>
+          <div class="result-box">
+            <span class="result-label">Best</span>
+            <span class="result-value" id="finalBest">0</span>
+          </div>
+        </div>
+        <p class="new-best hidden" id="newBestBadge">New Best Score!</p>
+        <button id="restartBtn" class="btn primary">Play Again</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Embedded sound effects (base64 encoded short WAV/MP3 clips) -->
+  <audio id="sfx-jump" preload="auto">
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+  </audio>
+  <audio id="sfx-score" preload="auto">
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+  </audio>
+  <audio id="sfx-hit" preload="auto">
+    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
